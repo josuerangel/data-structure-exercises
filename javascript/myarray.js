@@ -18,11 +18,27 @@ class MyArray{
         return this.data;
     }
 
+    pushOnFirst(item){
+        this.push(item);
+        this.shiftIndexUp(0);
+        this.data[0] = item;
+        return this.data;
+    }
+    shiftIndexUp(index){
+        for (let i = this.length-1; i >= index; i--) {
+            this.data[i] = this.data[i-1];            
+        }
+    }
+
     pop(){
         this.length--;
         const lastItem = this.data[this.length];
         delete this.data[this.length];
         return lastItem;
+    }
+
+    removeFisrt(){
+        return this.delete(0);
     }
 
     delete(index){
@@ -47,4 +63,7 @@ console.log(myarray);
 console.log(myarray.push("uno"));
 console.log(myarray.push("dos"));
 console.log(myarray.delete(1));
+console.log(myarray);
+console.log(myarray.pushOnFirst("cerocero"));
+console.log(myarray.removeFisrt());
 console.log(myarray);
